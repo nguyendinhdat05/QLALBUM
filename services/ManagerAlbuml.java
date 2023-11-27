@@ -11,22 +11,22 @@ import java.util.List;
 
 public class ManagerAlbuml {
     List<Albuml> albums;
- //   List<Song> songs =new ArrayList<>();
+    //   List<Song> songs =new ArrayList<>();
 
     public ManagerAlbuml() throws IOException {
         albums = FileAlbuml.readFileAlbum("album.csv");
-   }
+    }
 
-   //Show song
+    //Show song
     // hàm hiện
-    public void showAll(){
+    public void showAll() {
         for (int i = 0; i < this.albums.size(); i++) {
             System.out.println(albums.get(i));
         }
     }
 
     // hàm thêm
-    public void addAlbuml(Albuml albuml){
+    public void addAlbuml(Albuml albuml) {
         albums.add(albuml);
     }
 
@@ -34,34 +34,35 @@ public class ManagerAlbuml {
     public void deleteAlbuml(String name) {
         int index = -1;
         for (int i = 0; i < albums.size(); i++) {
-            if (this.albums.get(i).getName().equals(name)){
-                index=i;
+            if (this.albums.get(i).getName().equals(name)) {
+                index = i;
             }
         }
         this.albums.remove(index);
     }
 
     // hàm sửa tên albuml
-    public void editNameAlbuml(String name,Albuml albuml){
+    public void editNameAlbuml(String name, Albuml albuml) {
         int index = -1;
         for (int i = 0; i < albums.size(); i++) {
-            if(this.albums.get(i).getName().equals(name)){
+            if (this.albums.get(i).getName().equals(name)) {
                 index = i;
             }
         }
-        this.albums.set(index,albuml);
+        this.albums.set(index, albuml);
     }
 
     // hàm tìm albuml của mình
-    public void findNameAlbuml(String name){
+    public void findNameAlbuml(String name) {
         int index = -1;
         for (int i = 0; i < albums.size(); i++) {
-            if(this.albums.get(i).getName().equals(name)){
+            if (this.albums.get(i).getName().equals(name)) {
                 index = i;
             }
         }
         System.out.println(this.albums.get(index));
     }
+
     public List<Albuml> getAlbums() {
         return albums;
     }
@@ -72,12 +73,20 @@ public class ManagerAlbuml {
 
 
     public void addSongToAlbum(String name, Song song) {
-        for (Albuml album: albums) {
+        boolean findAlbum = false;
+        for (Albuml album : albums) {
             if (album.getName().equals(name)) {
+                findAlbum = true;
+                System.out.println("bài hát đã được thêm vào album" + " " + name);
                 album.getSong().add(song);
+                break;
+            }
+            if (!findAlbum) {
+                System.out.println("tên album không tồn tại");
             }
         }
     }
+}
 
 //    public static void main(String[] args) throws IOException {
 //        Song song = new Song(10, "a", "b");
@@ -86,4 +95,4 @@ public class ManagerAlbuml {
 //        managerAlbuml.addSongToAlbum("a", song);
 //        managerAlbuml.showAll();
 //    }
-}
+

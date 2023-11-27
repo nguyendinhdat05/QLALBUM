@@ -45,8 +45,9 @@ public class MenuSong {
                     String nameSinger = inputString.nextLine();
                     Song song = new Song(id, nameSong, nameSinger);
                     managerSong.addSong(song);
-//managerAlbuml.addSongToAlbum("nameAlbum", song);
+                    managerAlbuml.addSongToAlbum(nameAlbum, song);
                     FileSong.writerFileSong("song.csv", managerSong.getSongs());
+                    FileAlbuml.writerFileAlbum("album.csv",managerAlbuml.getAlbums());
                     break;
                 case 3:
 
