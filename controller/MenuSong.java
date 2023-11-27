@@ -4,12 +4,14 @@ import file.FileAlbuml;
 import file.FileSong;
 import models.Albuml;
 import models.Song;
+import services.ManagerAlbuml;
 import services.ManagerSong;
 
 import java.io.IOException;
 import java.util.Scanner;
 
 public class MenuSong {
+    ManagerAlbuml managerAlbuml = new ManagerAlbuml();
     ManagerSong managerSong = new ManagerSong();
     Scanner inputInt = new Scanner(System.in);
     Scanner inputString = new Scanner(System.in);
@@ -33,7 +35,8 @@ public class MenuSong {
                     managerSong.showAll1();
                     break;
                 case 2:
-
+                    System.out.println("nhập tên của album muốn thêm bài hát");
+                    String nameAlbum = inputString.nextLine();
                     System.out.println("nhập id của bài hát mới");
                     int id = inputInt.nextInt();
                     System.out.println("nhập tên bài hát mới");
@@ -42,9 +45,11 @@ public class MenuSong {
                     String nameSinger = inputString.nextLine();
                     Song song = new Song(id, nameSong, nameSinger);
                     managerSong.addSong(song);
+//managerAlbuml.addSongToAlbum("nameAlbum", song);
                     FileSong.writerFileSong("song.csv", managerSong.getSongs());
                     break;
                 case 3:
+
                     System.out.println("nhập tên bài hát muốn xóa");
                     String name = inputString.nextLine();
                     managerSong.deleteSong(name);

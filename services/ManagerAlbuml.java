@@ -16,6 +16,7 @@ public class ManagerAlbuml {
     public ManagerAlbuml() throws IOException {
         albums = FileAlbuml.readFileAlbum("album.csv");
    }
+
    //Show song
     // hàm hiện
     public void showAll(){
@@ -68,16 +69,21 @@ public class ManagerAlbuml {
     public void setAlbums(List<Albuml> albums) {
         this.albums = albums;
     }
+
+
     public void addSongToAlbum(String name, Song song) {
         for (Albuml album: albums) {
-            if (album.getName().equals(name)) album.getSong().add(song);
+            if (album.getName().equals(name)) {
+                album.getSong().add(song);
+            }
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        Song song = new Song(10, "a", "b");
-        ManagerAlbuml managerAlbuml = new ManagerAlbuml();
-        managerAlbuml.addSongToAlbum("a", song);
-        managerAlbuml.showAll();
-    }
+//    public static void main(String[] args) throws IOException {
+//        Song song = new Song(10, "a", "b");
+//        Song song1 = new Song(20, "a", "b");
+//        ManagerAlbuml managerAlbuml = new ManagerAlbuml();
+//        managerAlbuml.addSongToAlbum("a", song);
+//        managerAlbuml.showAll();
+//    }
 }

@@ -33,8 +33,7 @@ public class MenuAlbuml {
                             "\n 2.thêm albuml mới" +
                             "\n 3.xóa albuml" +
                             "\n 4.tim kiem albuml theo tên" +
-                            "\n 5.sửa albuml "+
-                            "\n 6.truy cập vào album"
+                            "\n 5.sửa albuml "
             );
             choice = inputInt.nextInt();
             switch (choice) {
@@ -72,12 +71,6 @@ public class MenuAlbuml {
                     managerAlbuml.editNameAlbuml(newA,newAlbum);
                     FileAlbuml.writerFileAlbum("album.csv",managerAlbuml.getAlbums());
                     break;
-//                case 6:
-//                    System.out.println("nhập album muốn truy cập");
-//                    String name3 = inputString.nextLine();
-
-
-
             }
 
         } while (choice != 0);
